@@ -37,8 +37,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function phone()
+    // public function phone()
+    // {
+    //     return $this->hasOne(Phone::class);
+    // }
+    // \
+    
+
+    // public function posts() // user has many posts so plural.
+    // {
+    //     return $this->hasMany(\App\Post::class);
+    // }
+
+
+    public function roles()
     {
-        return $this->hasOne(Phone::class);
+        return $this->belongsToMany(Role::class)->withPivot('name')->withTimestamps();
+    }
+
+    private function  testing ()
+    {
+        return "hello";
     }
 }
